@@ -1,20 +1,24 @@
 <template>
   <div id="app">
-    <index />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import index from './views/index.vue'
-
+import tabbar from "./components/common/tabbar/Tabbar";
+import tabbarItem from './components/common/tabbar/TabbarItem'
+import index from './views/index';
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    index
+    index,
+    tabbar,
+    tabbarItem
   }
-}
+};
 </script>
 
 <style>
-
+@import url("assets/css/normalize.css");
+@import url("assets/css/base.css");
 </style>
