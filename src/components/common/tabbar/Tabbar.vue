@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name:'Tabbar'
+  name: "Tabbar"
 };
 </script>
 
@@ -18,6 +18,6 @@ export default {
   right: 0;
   bottom: 0;
   box-shadow: 0 -3px 2px rgba(193, 193, 193, 0.3);
-   height: 49px;
+  height: 49px;
 }
 </style>

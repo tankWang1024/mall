@@ -173,61 +173,61 @@ Mock.mock("mock/home/data?type=pop&page=1",{
   data:{
     list:[
       {
-        id:1,
+        id:'pop1',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:2,
+        id:'pop2',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:3,
+        id:'pop3',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:4,
+        id:'pop4',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:5,
+        id:'pop5',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:6,
+        id:'pop6',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:7,
+        id:'pop7',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:8,
+        id:'pop8',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:9,
+        id:'pop9',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
         title:'女装潮流韩流日系港风大气修身宽松上衣下装'
       },{
-        id:10,
+        id:'pop10',
         price:100.00,
         cfav:20,
         imgUrl:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1550924135,2356778029&fm=26&gp=0.jpg',
@@ -242,62 +242,62 @@ Mock.mock("mock/home/data?type=pop&page=2",{
   data:{
     list:[
       {
-        id:11,
+        id:'pop11',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },
       {
-        id:12,
+        id:'pop12',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:13,
+        id:'pop13',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:14,
+        id:'pop14',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:15,
+        id:'pop15',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:16,
+        id:'pop16',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:17,
+        id:'pop17',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:18,
+        id:'pop18',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:19,
+        id:'pop19',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
         title:'女连衣裙宽松夏天阳光斑点'
       },{
-        id:20,
+        id:'pop20',
         price:120.99,
         cfav:20,
         imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584455037664&di=4f0858ebe01581597920b0021bc14ee3&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1641756928%2C2208674140%26fm%3D214%26gp%3D0.jpg',
