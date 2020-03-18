@@ -1,3 +1,8 @@
+:root{
+  --base-color:#ed54a8;
+  --banner-color:#eb557b;
+  --text-color: #eb7fb5;
+}
 .clearfix::after{
   clear: both;
   content: '';
@@ -16,9 +21,8 @@ input {
 }
 .text-overflow-hidden {
   white-space: nowrap;
-  word-spacing: normal;
-  letter-spacing: normal;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 a {
   color: #555;

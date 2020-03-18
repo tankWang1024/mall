@@ -9,7 +9,6 @@
   </div>
 </template>
 <script>
-import { getHomeMultidata } from "network/home.js";
 export default {
   name:'HomeRecommend',
   props:{

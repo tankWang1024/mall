@@ -24,18 +24,12 @@ export default {
     line-height: 44px;
     text-align: center;
     box-shadow: 0 1px 1px rgba(100, 100, 100, .1);
-    /* position: fixed;
+    position: fixed;
     left: 0;
     right: 0;
-    top: 0; */
+    top: 0;
+    z-index: 9;
   }
-  /* .nav-bar::after{
-    clear: both;
-    height: 0;
-    width: 0;
-    display: block;
-    visibility: hidden;
-  } */
   .left , .right{
     width: 60px;
   }
