@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import navbar from "components/common/navbar/Navbar";
+import Navbar from "components/common/navbar/Navbar";
 import TabControl from "components/content/tabControl/TabControl";
 import BScroll from "components/common/scroll/BScroll";
 
@@ -60,7 +60,7 @@ import mockNetwork from "network/mock.js";
 export default {
   name: "Home",
   components: {
-    navbar,
+    Navbar,
     TabControl,
     BScroll,
     homeSwiper,

@@ -1,11 +1,15 @@
 <template>
   <div>
-    <h1>{{id}}</h1>
+    <detail-navbar />
   </div>
 </template>
 <script>
+import DetailNavbar from './childrenCom/DetailNavbar'
 export default {
   name:'Detail',
+  components:{
+    DetailNavbar
+  },
   data() {
     return {
       id:null
