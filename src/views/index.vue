@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <router-view></router-view>
+  <div class="index">
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <main-tabbar></main-tabbar>
   </div>
 </template>
@@ -15,4 +17,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.index{
+  height: 100%;
+}
+</style>

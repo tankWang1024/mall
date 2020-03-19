@@ -1,7 +1,6 @@
 <template>
-  <div class="goods-item">
-    <a href="#">
-      <img :src="goodsItem.imgUrl" alt="" class="goods-img" />
+  <div class="goods-item" @click="itemClick">
+      <img :src="goodsItem.imgUrl" alt="" class="goods-img" @load="imgLoad"/>
     <div class="goods-title">
       {{ goodsItem.title }}
     </div>
@@ -9,7 +8,6 @@
       <span class="goods-price">{{ goodsItem.price.toFixed(2) }}</span>
       <span class="goods-cfav">{{ goodsItem.cfav }}</span>
     </div>
-    </a>
   </div>
 </template>
 
@@ -23,7 +21,16 @@ export default {
         return {};
       }
     }
-  }
+  },
+  methods: {
+    imgLoad(){
+      this.$bus.$emit('imgLoad')
+    },
+    itemClick(){
+      this.$router.push('/detail/'+this.goodsItem.id)
+      
+    }
+  },
 };
 </script>
 <style scoped>

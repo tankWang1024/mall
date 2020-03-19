@@ -5,6 +5,13 @@
         购物街
       </template>
     </navbar>
+    <tab-control
+      :titles="['流行', '新款', '精选']"
+      class="tab-control1"
+      @tabClick="tabClick"
+      ref="tabControl1"
+      v-show="tabControlShow"
+    />
     <b-scroll
       class="scroll-wrapper"
       ref="scroll"
@@ -14,7 +21,10 @@
       @pullingUp="loadMore"
     >
       <template v-slot:default>
-        <home-swiper :home-swiper="banner"></home-swiper>
+        <home-swiper
+          :home-swiper="banner"
+          @SwipperImgLoad="SwipperImgLoad"
+        ></home-swiper>
         <home-recommend
           :home-recommend="recommend"
           class="home-recommend"
@@ -22,9 +32,9 @@
         <Home-feature></Home-feature>
         <tab-control
           :titles="['流行', '新款', '精选']"
-          class="tab-control"
           @tabClick="tabClick"
-        ></tab-control>
+          ref="tabControl2"
+        />
         <goods-list :goodsList="showgoods"></goods-list>
       </template>
     </b-scroll>
@@ -44,6 +54,7 @@ import GoodsList from "components/content/goods/GoodsList";
 import BackTop from "components/content/backTop/BackTop";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
+import { debounce } from "common/utils";
 
 import mockNetwork from "network/mock.js";
 export default {
@@ -77,8 +88,16 @@ export default {
         }
       },
       currentType: "pop",
-      backUpShow: false
+      currentIndex: 0,
+      tabControlTop: 0,
+      backUpShow: false,
+      tabControlShow: false
     };
+  },
+  computed: {
+    showgoods() {
+      return this.goods[this.currentType].list;
+    }
   },
   mounted() {
     //请求数据
@@ -86,16 +105,17 @@ export default {
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
+    const refresh = debounce(this.$refs.scroll.refresh, 50); // 一直执行debounc返回的函数
+    this.$bus.$on("imgLoad", () => {
+      refresh();
+    });
   },
-  computed: {
-    showgoods() {
-      return this.goods[this.currentType].list;
-    }
+  beforeDestroy() {
+    this.$bus.$off("imgLoad");
   },
   methods: {
     //------事件监听----------
     tabClick(index) {
-      console.log(index);
       switch (index) {
         case 0:
           this.currentType = "pop";
@@ -107,19 +127,24 @@ export default {
           this.currentType = "sell";
           break;
       }
+      this.$refs.tabControl1.currentIndex = index;
+      this.$refs.tabControl2.currentIndex = index;
+      if(this.tabControlShow){
+        this.$refs.scroll.toPosition(0,-this.tabControlTop,0)
+      }
+    },
+    SwipperImgLoad() {
+      this.tabControlTop = this.$refs.tabControl2.$el.offsetTop;
     },
     backTop() {
       this.$refs.scroll.toPosition(0, 0);
     },
     contentSCroll(position) {
-      // console.log(position);
       this.backUpShow = -position.y > 340;
+      this.tabControlShow = -position.y > this.tabControlTop;
     },
     loadMore() {
-      // =================todo: 确定图片加载后再执行后面
       this.getHomeGoods(this.currentType);
-      this.$refs.scroll.finishPullUp();
-      this.$refs.scroll.scroll.refresh();
     },
 
     //------网络请求-----------
@@ -133,11 +158,15 @@ export default {
       });
     },
     getHomeGoods(type) {
-      getHomeGoods(type, this.goods[type].page).then(res => {
-        // console.log(res);
-        this.goods[type].list.push(...res.data.data.list);
-        this.goods[type].page += 1;
-      });
+      getHomeGoods(type, this.goods[type].page)
+        .then(res => {
+          // console.log(res);
+          if (res.status == 200) {
+            this.goods[type].list.push(...res.data.data.list);
+            this.goods[type].page += 1;
+          }
+        })
+        .catch(err => {});
     }
   }
 };
@@ -145,21 +174,22 @@ export default {
 
 <style scoped>
 #home {
-  padding-top: 44px;
-  height: 100vh;
+  box-sizing: border-box;
+  height: 100%;
   position: relative;
 }
 .home-navbar {
   background-color: var(--banner-color);
+  box-shadow: 0 1px 1px rgba(100, 100, 100, 0.1);
   color: white;
 }
 .home-recommend {
   padding-bottom: 10px;
   border-bottom: 8px solid #dedede;
 }
-.tab-control {
-  position: sticky;
-  top: 44px;
+.tab-control1 {
+  position: relative;
+  z-index: 9;
 }
 .scroll-wrapper {
   position: absolute;

@@ -21,4 +21,10 @@ export default {
 <style>
 @import url("~assets/css/normalize.css");
 @import url("~assets/css/base.css");
+html,body{
+  height: 100%;
+}
+#app{
+  height: 100%;
+}
 </style>

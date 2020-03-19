@@ -1,10 +1,14 @@
 <template>
   <div>
     <!-- 加入判断时，loop才生效 -->
-    <swiper :options="swiperOption" ref="mySwiper" v-if="homeSwiper.length > 1" >
+    <swiper :options="swiperOption" ref="mySwiper" v-if="homeSwiper.length > 1">
       <swiper-slide v-for="item in homeSwiper" :key="item.image"
         ><a :href="item.link"
-          ><img :src="item.image" alt="" class="swiper-img"/></a
+          ><img
+            :src="item.image"
+            alt=""
+            class="swiper-img"
+            @load="bannerLoad"/></a
       ></swiper-slide>
       <div
         id="home-pagination"
@@ -23,11 +27,11 @@ export default {
     swiper,
     swiperSlide
   },
-  props:{
-    homeSwiper:{
-      type:Array,
-      default(){
-        return []
+  props: {
+    homeSwiper: {
+      type: Array,
+      default() {
+        return [];
       }
     }
   },
@@ -49,10 +53,10 @@ export default {
             //你的事件
           }
         }
-      }
+      },
+      isLoad: false
     };
   },
-  computed: {},
   mounted() {
     // 只有一张图时，autoplay为false
     this.swiperOption.autoplay =
@@ -63,6 +67,14 @@ export default {
             disableOnInteraction: false //用户操作swiper之后自动切换不会停止
           }
         : false;
+  },
+  methods: {
+    bannerLoad() {
+      if(!this.isLoad){
+        this.$emit("SwipperImgLoad");
+        this.isLoad = true
+      }
+    }
   }
 };
 </script>
