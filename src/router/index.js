@@ -6,9 +6,9 @@ const routes = [{
   component: () => import('views/index'),
   redirect: '/home',
   children: [{
-    path:'',
-    redirect:"/home"
-  },{
+    path: '',
+    redirect: "/home"
+  }, {
     path: '/home',
     component: () => import('views/home/Home')
   }, {
@@ -20,7 +20,7 @@ const routes = [{
   }, {
     path: '/profile',
     component: () => import('views/profile/Profile')
-  }, , {
+  }, {
     path: '/detail/:id',
     component: () => import('views/detail/Detail')
   }, ]
@@ -28,5 +28,5 @@ const routes = [{
 
 export default new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
 })

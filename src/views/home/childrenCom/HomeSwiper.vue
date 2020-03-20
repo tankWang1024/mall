@@ -1,5 +1,4 @@
 <template>
-  <div>
     <!-- 加入判断时，loop才生效 -->
     <swiper :options="swiperOption" ref="mySwiper" v-if="homeSwiper.length > 1">
       <swiper-slide v-for="item in homeSwiper" :key="item.image"
@@ -16,7 +15,6 @@
         class="swiper-pagination"
       ></div>
     </swiper>
-  </div>
 </template>
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";

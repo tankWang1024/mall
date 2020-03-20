@@ -2,6 +2,8 @@
   --base-color:#ed54a8;
   --banner-color:#eb557b;
   --text-color: #eb7fb5;
+  --top_nav_height:44px;
+  --lightgray-text-color:#9e9a9a;
 }
 .clearfix::after{
   clear: both;
