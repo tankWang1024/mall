@@ -1,37 +1,35 @@
 <template>
   <div id="home-commend">
     <div v-for="item in homeRecommend" :key="item.image" class="commond-item">
-      <a :href="item.link">
-        <img :src="item.image" alt="">
-        <div>{{item.title}}</div>
-      </a>
+      <img :src="item.image" alt="" />
+      <div>{{ item.title }}</div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name:'HomeRecommend',
-  props:{
-    homeRecommend:{
-      type:Array,
-      default(){
-        return []
+  name: "HomeRecommend",
+  props: {
+    homeRecommend: {
+      type: Array,
+      default() {
+        return [];
       }
     }
-  },
-}
+  }
+};
 </script>
 <style scoped>
-#home-commend{
+#home-commend {
   width: 100%;
   display: flex;
   margin: 10px 0 20px 0;
   text-align: center;
 }
-.commond-item{
+.commond-item {
   flex: 1;
 }
-.commond-item img{
+.commond-item img {
   width: 65px;
   height: 65px;
 }

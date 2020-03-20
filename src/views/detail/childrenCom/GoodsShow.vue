@@ -1,6 +1,6 @@
 <template>
   <div v-if="imgList">
-    <img v-for="(item,index) in imgList" :key="index+'goodsShow'" :src="item" alt="">
+    <img v-for="(item,index) in imgList" :key="index+'goodsShow'" :src="item" @load="imgLoad">
   </div>
 </template>
 <script>
@@ -11,6 +11,18 @@ export default {
       type:Array,
       default(){
         return []
+      }
+    }
+  },
+  data() {
+    return {
+      currentIndex:0
+    }
+  },
+  methods: {
+    imgLoad(){
+      if(++currentIndex == imgList.length){
+        this.$emit('goodsShowLoad')
       }
     }
   },

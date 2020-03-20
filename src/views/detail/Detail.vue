@@ -4,7 +4,7 @@
     <b-scroll class="scroll-wrapper">
       <detail-swiper :detailBanner="banner" class="swiper" />
       <detail-info :info="info" />
-      <goods-show :imgList="imgList"/>
+      <goods-show :imgList="imgList" @goodsShowLoad="goodsShowLoad"/>
     </b-scroll>
   </div>
 </template>
@@ -49,7 +49,12 @@ export default {
         this.imgList = res.data.imgList
       }
     });
-  }
+  },
+  methods: {
+    goodsShowLoad(){
+      
+    }
+  },
 };
 </script>
 <style scoped>

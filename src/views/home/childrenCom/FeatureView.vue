@@ -1,13 +1,11 @@
 <template>
   <div class="feature">
-    <a href="https://act.mogujie.com/zzlx67">
-      <img src="~assets/img/home/feature.png" alt="" class="feaImg" />
-    </a>
+    <img src="~assets/img/home/feature.png" alt="" class="feaImg" />。
   </div>
 </template>
 <script>
 export default {
-  name: "HomeFeature",
+  name: "HomeFeature"
 };
 </script>
 <style scoped>
