@@ -1,5 +1,5 @@
 <template>
-  <div v-if="imgList">
+  <div v-if="imgList" class="goodsShow">
     <img
       v-for="(item, index) in imgList"
       :key="index + 'goodsShow'"
@@ -34,7 +34,11 @@ export default {
 };
 </script>
 <style scoped>
-img {
+.goodsShow{
   width: 96%;
+  margin: 0 auto;
+}
+img {
+  width: 100%;
 }
 </style>

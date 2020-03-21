@@ -22,11 +22,19 @@ const routes = [{
     component: () => import('views/profile/Profile')
   }, {
     path: '/detail/:id',
-    component: () => import('views/detail/Detail')
+    component: () => import('views/detail/Detail'),
+  }, , {
+    path: '/moreComment/:id',
+    component: () => import('views/moreComment/MoreComment'),
   }, ]
 }]
-
-export default new VueRouter({
+const router = new VueRouter({
   routes,
   mode: 'history',
 })
+
+router.beforeEach((to, from, next) => {
+
+  next()
+})
+export default router

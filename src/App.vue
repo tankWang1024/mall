@@ -5,15 +5,11 @@
 </template>
 
 <script>
-import tabbar from "components/common/tabbar/Tabbar";
-import tabbarItem from 'components/common/tabbar/TabbarItem'
 import index from 'views/index';
 export default {
   name: "App",
   components: {
     index,
-    tabbar,
-    tabbarItem
   }
 };
 </script>

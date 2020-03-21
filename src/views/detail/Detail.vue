@@ -1,10 +1,12 @@
 <template>
   <div id="detail" v-if="update">
     <detail-navbar class="navbar" />
-    <b-scroll class="scroll-wrapper">
+    <b-scroll class="scroll-wrapper" ref="scroll">
       <detail-swiper :detailBanner="banner" class="swiper" />
       <detail-info :info="info" />
       <goods-show :imgList="imgList" @goodsShowLoad="goodsShowLoad"/>
+      <goods-desc :goodsDesc="goodsDesc"/>
+      <goods-comment :goodsComment="goodsComment" :id="id"/>
     </b-scroll>
   </div>
 </template>
@@ -14,7 +16,9 @@ import BScroll from "components/common/scroll/BScroll";
 import DetailNavbar from "./childrenCom/DetailNavbar";
 import DetailSwiper from "./childrenCom/DetailSwiper";
 import DetailInfo from "./childrenCom/DetailInfo";
-import GoodsShow from './childrenCom/GoodsShow'
+import GoodsShow from './childrenCom/GoodsShow';
+import GoodsDesc from './childrenCom/GoodsDesc';
+import GoodsComment from './childrenCom/GoodsComment'
 
 import { getDetail } from "network/detail";
 
@@ -25,7 +29,9 @@ export default {
     DetailNavbar,
     DetailSwiper,
     DetailInfo,
-    GoodsShow
+    GoodsShow,
+    GoodsDesc,
+    GoodsComment
   },
   data() {
     return {
@@ -33,7 +39,9 @@ export default {
       banner: [],
       info: {},
       update: true,
-      imgList:[]
+      imgList:[],
+      goodsDesc:{},
+      goodsComment:{},
     };
   },
   mounted() {
@@ -47,12 +55,14 @@ export default {
         this.banner = res.data.banner;
         this.info = res.data.info;
         this.imgList = res.data.imgList
+        this.goodsDesc = res.data.goodsDesc
+        this.goodsComment = res.data.comments
       }
     });
   },
   methods: {
     goodsShowLoad(){
-      
+      this.$refs.scroll.refresh()
     }
   },
 };

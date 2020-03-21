@@ -527,17 +527,45 @@ Mock.mock("mock/detail?id=pop1", {
 
   },
   imgList: ['https://s11.mogucdn.com/mlcdn/c45406/200105_60al0a0cl4d4glia5g9fbc08lild1_800x799.jpg_750x999.jpg',
-    'https://s5.mogucdn.com/mlcdn/c45406/200105_5fg0ii3ell5f44ihh55j50d15eee8_799x799.jpg_750x999.jpg',
-    'https://s5.mogucdn.com/mlcdn/c45406/200105_6cj3lk99fgi20ed7ekc1448g85584_800x799.jpg_750x999.jpg',
-    'https://s5.mogucdn.com/mlcdn/c45406/200105_7gh53jgl82a7h5b1e0a93efld68dc_800x799.jpg_750x999.jpg',
-    'https://s5.mogucdn.com/mlcdn/c45406/200105_45gkg0fa459d662j47i8bcg1j8dla_800x916.jpg_750x999.jpg',
-    'https://s11.mogucdn.com/mlcdn/c45406/200105_8681gc3f24li51hfclbleci1id2i4_800x785.jpg_750x999.jpg',
-    'https://s11.mogucdn.com/mlcdn/c45406/200105_4369ih3chji81c94dl8c1j7el6gjk_800x799.jpg_750x999.jpg',
-    'https://s5.mogucdn.com/mlcdn/c45406/200105_508l4hgf3gj24jck75dalcid7896f_800x799.jpg_750x999.jpg',
-    'https://s11.mogucdn.com/mlcdn/c45406/200105_49a23ld34e5c2b516eggcfhkf7hhe_800x799.jpg_750x999.jpg',
-    'https://s11.mogucdn.com/mlcdn/c45406/200105_5fbk8dg4fbgig992f25j317gf2c39_800x800.jpg_750x999.jpg',
-    'https://s5.mogucdn.com/p2/170317/77101615_6f3ak83kkl00329ged9249aa93ifb_1125x285.jpg_750x999.jpg'
-  ]
+    // 'https://s5.mogucdn.com/mlcdn/c45406/200105_5fg0ii3ell5f44ihh55j50d15eee8_799x799.jpg_750x999.jpg',
+    // 'https://s5.mogucdn.com/mlcdn/c45406/200105_6cj3lk99fgi20ed7ekc1448g85584_800x799.jpg_750x999.jpg',
+    // 'https://s5.mogucdn.com/mlcdn/c45406/200105_7gh53jgl82a7h5b1e0a93efld68dc_800x799.jpg_750x999.jpg',
+    // 'https://s5.mogucdn.com/mlcdn/c45406/200105_45gkg0fa459d662j47i8bcg1j8dla_800x916.jpg_750x999.jpg',
+    // 'https://s11.mogucdn.com/mlcdn/c45406/200105_8681gc3f24li51hfclbleci1id2i4_800x785.jpg_750x999.jpg',
+    // 'https://s11.mogucdn.com/mlcdn/c45406/200105_4369ih3chji81c94dl8c1j7el6gjk_800x799.jpg_750x999.jpg',
+    // 'https://s5.mogucdn.com/mlcdn/c45406/200105_508l4hgf3gj24jck75dalcid7896f_800x799.jpg_750x999.jpg',
+    // 'https://s11.mogucdn.com/mlcdn/c45406/200105_49a23ld34e5c2b516eggcfhkf7hhe_800x799.jpg_750x999.jpg',
+    // 'https://s11.mogucdn.com/mlcdn/c45406/200105_5fbk8dg4fbgig992f25j317gf2c39_800x800.jpg_750x999.jpg',
+    // 'https://s5.mogucdn.com/p2/170317/77101615_6f3ak83kkl00329ged9249aa93ifb_1125x285.jpg_750x999.jpg'
+  ],
+  sizeTip:'※ 以上尺寸为实物人工测量，因测量方式不同会有1-2cm误差，相关数据仅作参考，以收到实物为准。',
+  goodsDesc: {
+    size: [
+      ['长款连衣裙', '衣长', '肩宽', '胸围', '袖长'],
+      ['S', '94', '36', '90', '56'],
+      ['M', '95', '37', '94', '57'],
+      ['L', '96', '38', '98', '58'],
+      ['XL', '97', '39', '102', '59']
+    ],
+    describe: [
+      ['裙型', '开衩', '袖型', '衣门襟', '材质', '摆型', '腰型', '版型', '季节', '领型'],
+      ['A字裙', '无开衩', '衬衫袖', '拉链', '其他', '常规', '高腰', '收腰', '春季', '立领']
+    ]
+  },
+  comments: {
+    uimg: 'https://img.alicdn.com/tps/i3/TB1yeWeIFXXXXX5XFXXuAZJYXXX-210-210.png',
+    uname: '我只有三块钱',
+    createdTime: 1584759404606,
+    style: '颜色：白色斑点 尺码：L',
+    imgList: ['https://s5.mogucdn.com/mlcdn/c45406/200105_45gkg0fa459d662j47i8bcg1j8dla_800x916.jpg_750x999.jpg',
+      'https://s11.mogucdn.com/mlcdn/c45406/200105_5fbk8dg4fbgig992f25j317gf2c39_800x800.jpg_750x999.jpg'
+    ],
+    commentSum:555,
+    content:'衣服合适，没有多余线头\n俺很喜欢'
+
+  }
+
+
 
 })
 export default Mock
