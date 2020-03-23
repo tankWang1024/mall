@@ -56,7 +56,6 @@ import BackTop from "components/content/backTop/BackTop";
 import { getHomeMultidata, getHomeGoods } from "network/home";
 import { debounce } from "common/utils";
 
-import mockNetwork from "network/mock.js";
 export default {
   name: "Home",
   components: {
@@ -99,16 +98,20 @@ export default {
       return this.goods[this.currentType].list;
     }
   },
+  created() {
+    
+  },
   mounted() {
     //请求数据
     this.getHomeMultidata();
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
-    const refresh = debounce(this.$refs.scroll.refresh, 50); // 一直执行debounc返回的函数
+    const refresh = debounce(this.$refs.scroll.refresh, 1); // 一直执行debounce返回的函数
     this.$bus.$on("imgLoad", () => {
       refresh();
     });
+    this.$refs.scroll.toPosition(0,0,0)
   },
   beforeDestroy() {
     this.$bus.$off("imgLoad");
@@ -141,7 +144,8 @@ export default {
     },
     contentSCroll(position) {
       this.backUpShow = -position.y > 340;
-      this.tabControlShow = -position.y > this.tabControlTop;
+      //-----------多次刷新，会触发betterscroll的scroll方法。。
+      this.tabControlShow = -position.y > this.tabControlTop && -position.y > 50;
     },
     loadMore() {
       this.getHomeGoods(this.currentType);
@@ -188,6 +192,7 @@ export default {
   border-bottom: 8px solid #dedede;
 }
 .tab-control1 {
+  width: 100%;
   position: relative;
   z-index: 9;
 }

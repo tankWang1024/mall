@@ -54,6 +54,9 @@ export default {
       }
     }
   },
+  computed: {
+    
+  },
   mounted() {
     // console.log(this.info.price)
   }

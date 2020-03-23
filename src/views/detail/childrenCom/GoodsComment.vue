@@ -4,7 +4,7 @@
       <div class="title-text">用户评价</div>
       <div class="text-right" @click="moreComment"><span >更多</span></div>
     </div>
-    <div v-if="goodsComment.commentSum!=0">
+    <div v-if="goodsComment.commentSum!=0" class="comment">
       <div class="comment-name">
         <img :src="goodsComment.uimg" alt="">
         {{goodsComment.uname}}
@@ -67,6 +67,11 @@ export default {
   text-align: center;
   color: #918f8f;
 }
+.comment{
+  width: 96%;
+  margin: 0 auto;
+  padding-bottom: 28px;
+}
 .comment-name{
   display: flex;
   justify-content: flex-start;
@@ -82,5 +87,6 @@ export default {
   color: #706f6f;
   font-size: 15px;
   white-space: pre-line;
+  padding-top: 5px;
 }
 </style>

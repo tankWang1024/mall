@@ -4,9 +4,9 @@
     <b-scroll class="scroll-wrapper" ref="scroll">
       <detail-swiper :detailBanner="banner" class="swiper" />
       <detail-info :info="info" />
-      <goods-show :imgList="imgList" @goodsShowLoad="goodsShowLoad"/>
-      <goods-desc :goodsDesc="goodsDesc"/>
-      <goods-comment :goodsComment="goodsComment" :id="id"/>
+      <goods-show :imgList="imgList" @goodsShowLoad="goodsShowLoad" />
+      <goods-desc :goodsDesc="goodsDesc" />
+      <goods-comment :goodsComment="goodsComment" :id="id" />
     </b-scroll>
   </div>
 </template>
@@ -16,9 +16,9 @@ import BScroll from "components/common/scroll/BScroll";
 import DetailNavbar from "./childrenCom/DetailNavbar";
 import DetailSwiper from "./childrenCom/DetailSwiper";
 import DetailInfo from "./childrenCom/DetailInfo";
-import GoodsShow from './childrenCom/GoodsShow';
-import GoodsDesc from './childrenCom/GoodsDesc';
-import GoodsComment from './childrenCom/GoodsComment'
+import GoodsShow from "./childrenCom/GoodsShow";
+import GoodsDesc from "./childrenCom/GoodsDesc";
+import GoodsComment from "./childrenCom/GoodsComment";
 
 import { getDetail } from "network/detail";
 
@@ -39,12 +39,12 @@ export default {
       banner: [],
       info: {},
       update: true,
-      imgList:[],
-      goodsDesc:{},
-      goodsComment:{},
+      imgList: [],
+      goodsDesc: {},
+      goodsComment: {}
     };
   },
-  mounted() {
+  created() {
     // console.log(this.$route.params.id)
     // this.id = this.$route.params.id
     //--------没数据，固定展示一个商品
@@ -54,17 +54,18 @@ export default {
       if (res.status == 200) {
         this.banner = res.data.banner;
         this.info = res.data.info;
-        this.imgList = res.data.imgList
-        this.goodsDesc = res.data.goodsDesc
-        this.goodsComment = res.data.comments
+        this.imgList = res.data.imgList;
+        this.goodsDesc = res.data.goodsDesc;
+        this.goodsComment = res.data.comments;
       }
     });
   },
+  mounted() {},
   methods: {
-    goodsShowLoad(){
-      this.$refs.scroll.refresh()
+    goodsShowLoad() {
+      this.$refs.scroll.refresh();
     }
-  },
+  }
 };
 </script>
 <style scoped>

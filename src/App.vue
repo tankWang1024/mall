@@ -6,6 +6,7 @@
 
 <script>
 import index from 'views/index';
+import mockNetwork from "network/mock.js";
 export default {
   name: "App",
   components: {
