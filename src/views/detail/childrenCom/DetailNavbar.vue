@@ -6,7 +6,7 @@
       </div>
     </template>
     <template v-slot:center>
-      <tab-control :titles="titles" />
+      <tab-control :titles="titles" @tabClick='tabClick'/>
     </template>
   </navbar>
 </template>
@@ -27,7 +27,10 @@ export default {
   methods: {
     backClick(){
       this.$router.back()
-    }
+    },
+     tabClick(index){
+       this.$emit('tabClick',index)
+     }
   },
 };
 </script>

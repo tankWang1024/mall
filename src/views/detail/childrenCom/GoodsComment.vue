@@ -70,7 +70,6 @@ export default {
 .comment{
   width: 96%;
   margin: 0 auto;
-  padding-bottom: 28px;
 }
 .comment-name{
   display: flex;

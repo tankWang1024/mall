@@ -36,6 +36,7 @@ export default {
     this.scroll = scroll;
     if (this.probeType == 2 || this.probeType == 3) {
       this.scroll.on("scroll", position => {
+        // -----------------问题：滑动时立即切换组件，之后scroll会被一直触发，切回组件，点击后，才会停止---------------------------
         this.$emit("contentScroll", position);
       });
     }

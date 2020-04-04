@@ -1,17 +1,28 @@
 <template>
   <div id="detail" v-if="update">
-    <detail-navbar class="navbar" />
-    <b-scroll class="scroll-wrapper" ref="scroll">
-      <detail-swiper :detailBanner="banner" class="swiper" />
+    <detail-navbar class="navbar"  @tabClick='tabClick'/>
+    <b-scroll
+      class="scroll-wrapper"
+      ref="scroll"
+      @contentScroll="contentSCroll"
+      :probe-type="3"
+      :pull-up-load="false"
+    >
+      <detail-swiper :detailBanner="banner" class="swiper"/>
       <detail-info :info="info" />
       <goods-show :imgList="imgList" @goodsShowLoad="goodsShowLoad" />
-      <goods-desc :goodsDesc="goodsDesc" />
-      <goods-comment :goodsComment="goodsComment" :id="id" />
+      <goods-desc ref="desc" :goodsDesc="goodsDesc" />
+      <goods-comment ref="comment" :goodsComment="goodsComment" :id="id" />
+      <div class="title" ref="recommend">商品推荐</div>
+      <goods-list :goodsList="recommend" class="goodslist" />
     </b-scroll>
+    <back-top @click.native="backTop" v-show="backUpShow" />
   </div>
 </template>
 <script>
 import BScroll from "components/common/scroll/BScroll";
+import GoodsList from "components/content/goods/GoodsList";
+import BackTop from "components/content/backTop/BackTop";
 
 import DetailNavbar from "./childrenCom/DetailNavbar";
 import DetailSwiper from "./childrenCom/DetailSwiper";
@@ -20,7 +31,9 @@ import GoodsShow from "./childrenCom/GoodsShow";
 import GoodsDesc from "./childrenCom/GoodsDesc";
 import GoodsComment from "./childrenCom/GoodsComment";
 
-import { getDetail } from "network/detail";
+import { getDetail, getRecommend } from "network/detail";
+
+import { imgLoadListenerMixin, backTop } from "common/mixin";
 
 export default {
   name: "Detail",
@@ -31,7 +44,9 @@ export default {
     DetailInfo,
     GoodsShow,
     GoodsDesc,
-    GoodsComment
+    GoodsComment,
+    GoodsList,
+    BackTop
   },
   data() {
     return {
@@ -41,9 +56,12 @@ export default {
       update: true,
       imgList: [],
       goodsDesc: {},
-      goodsComment: {}
+      goodsComment: {},
+      recommend: [],
+      componentY: []
     };
   },
+  mixins: [imgLoadListenerMixin, backTop],
   created() {
     // console.log(this.$route.params.id)
     // this.id = this.$route.params.id
@@ -59,12 +77,32 @@ export default {
         this.goodsComment = res.data.comments;
       }
     });
+    getRecommend().then(res => {
+      console.log(res);
+      this.recommend = res.data.list;
+    });
   },
   mounted() {},
+  destroyed() {
+    this.$bus.$off("imgLoad", this.imgLoadListener);
+  },
   methods: {
     goodsShowLoad() {
       this.$refs.scroll.refresh();
-    }
+      this.componentY = []
+      this.componentY.push(0)
+      this.componentY.push(this.$refs.desc.$el.offsetTop)
+      this.componentY.push(this.$refs.comment.$el.offsetTop)
+      this.componentY.push(this.$refs.recommend.offsetTop)
+      console.log(this.componentY)
+    },
+    contentSCroll(position) {
+      this.backUpShow = -position.y > 340;
+    },
+    tabClick(index){
+      this.$refs.scroll.toPosition(0,-this.componentY[index],100)
+      
+    },
   }
 };
 </script>
@@ -86,5 +124,15 @@ export default {
   left: 0;
   right: 0;
   bottom: 49px;
+}
+.title {
+  font-size: 18px;
+  width: 96%;
+  margin: 8px auto;
+  padding: 10px 0;
+  border-bottom: 1px solid #dedede;
+}
+.goodslist {
+  padding-bottom: 20px;
 }
 </style>

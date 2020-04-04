@@ -54,7 +54,8 @@ import GoodsList from "components/content/goods/GoodsList";
 import BackTop from "components/content/backTop/BackTop";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
-import { debounce } from "common/utils";
+
+import {imgLoadListenerMixin,backTop} from 'common/mixin'
 
 export default {
   name: "Home",
@@ -89,8 +90,7 @@ export default {
       currentType: "pop",
       currentIndex: 0,
       tabControlTop: 0,
-      backUpShow: false,
-      tabControlShow: false
+      tabControlShow: false,
     };
   },
   computed: {
@@ -98,23 +98,22 @@ export default {
       return this.goods[this.currentType].list;
     }
   },
+  mixins:[imgLoadListenerMixin,backTop],
   created() {
-    
+    console.log('created');
   },
   mounted() {
+    console.log('mounted');
     //请求数据
     this.getHomeMultidata();
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
-    const refresh = debounce(this.$refs.scroll.refresh, 1); // 一直执行debounce返回的函数
-    this.$bus.$on("imgLoad", () => {
-      refresh();
-    });
     this.$refs.scroll.toPosition(0,0,0)
   },
-  beforeDestroy() {
-    this.$bus.$off("imgLoad");
+  deactivated() {
+    console.log('deactivated')
+    this.$bus.$off("imgLoad", this.imgLoadListener);
   },
   methods: {
     //------事件监听----------
@@ -139,10 +138,8 @@ export default {
     SwipperImgLoad() {
       this.tabControlTop = this.$refs.tabControl2.$el.offsetTop;
     },
-    backTop() {
-      this.$refs.scroll.toPosition(0, 0);
-    },
     contentSCroll(position) {
+      console.log('滚动中');
       this.backUpShow = -position.y > 340;
       //-----------多次刷新，会触发betterscroll的scroll方法。。
       this.tabControlShow = -position.y > this.tabControlTop && -position.y > 50;

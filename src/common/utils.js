@@ -1,7 +1,7 @@
 //方法
 
 // 防抖动
-export function debounce(func, delay) {
+export function debounce(func, delay=50) {
   // 防抖动函数,下次执行前等待时间大于等于delay时func才被执行
   // 持久化timer变量,只执行一次,然后拿返回的函数来执行
   let timer = null;

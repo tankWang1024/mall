@@ -563,8 +563,40 @@ Mock.mock("mock/detail?id=pop1", {
     commentSum:555,
     content:'衣服很好看，没有多余线头\n性价比高\n非常喜欢，还会回购'
   }
-
-
-
+})
+Mock.mock("mock/recommend",{
+  list:[
+    {
+      imgUrl:'https://s11.mogucdn.com/mlcdn/c45406/190311_7l96fkfd3eb0e3d0945a88lal613b_640x960.jpg_468x468.jpg',
+      title:"夏季新款女装仙女气质短袖小个子a字碎花雪纺连衣裙显瘦沙滩裙子",
+      price:99.9,
+      cfav:50
+    },{
+      imgUrl:'https://s11.mogucdn.com/mlcdn/c45406/190311_7l96fkfd3eb0e3d0945a88lal613b_640x960.jpg_468x468.jpg',
+      title:"夏季新款女装仙女气质短袖小个子a字碎花雪纺连衣裙显瘦沙滩裙子",
+      price:99.9,
+      cfav:50
+    },{
+      imgUrl:'https://s11.mogucdn.com/mlcdn/c45406/190311_7l96fkfd3eb0e3d0945a88lal613b_640x960.jpg_468x468.jpg',
+      title:"夏季新款女装仙女气质短袖小个子a字碎花雪纺连衣裙显瘦沙滩裙子",
+      price:99.9,
+      cfav:50
+    },{
+      imgUrl:'https://s11.mogucdn.com/mlcdn/c45406/190311_7l96fkfd3eb0e3d0945a88lal613b_640x960.jpg_468x468.jpg',
+      title:"夏季新款女装仙女气质短袖小个子a字碎花雪纺连衣裙显瘦沙滩裙子",
+      price:99.9,
+      cfav:50
+    },{
+      imgUrl:'https://s11.mogucdn.com/mlcdn/c45406/190311_7l96fkfd3eb0e3d0945a88lal613b_640x960.jpg_468x468.jpg',
+      title:"夏季新款女装仙女气质短袖小个子a字碎花雪纺连衣裙显瘦沙滩裙子",
+      price:99.9,
+      cfav:50
+    },{
+      imgUrl:'https://s11.mogucdn.com/mlcdn/c45406/190311_7l96fkfd3eb0e3d0945a88lal613b_640x960.jpg_468x468.jpg',
+      title:"夏季新款女装仙女气质短袖小个子a字碎花雪纺连衣裙显瘦沙滩裙子",
+      price:99.9,
+      cfav:50
+    },
+  ]
 })
 export default Mock
