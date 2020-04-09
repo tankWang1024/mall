@@ -1,6 +1,6 @@
 <template>
   <div id="detail" v-if="update">
-    <detail-navbar class="navbar"  @tabClick='tabClick'/>
+    <detail-navbar class="navbar" @tabClick='tabClick' ref="detailNav"/>
     <b-scroll
       class="scroll-wrapper"
       ref="scroll"
@@ -58,7 +58,8 @@ export default {
       goodsDesc: {},
       goodsComment: {},
       recommend: [],
-      componentY: []
+      componentY: [],
+      currentIndex:0
     };
   },
   mixins: [imgLoadListenerMixin, backTop],
@@ -98,11 +99,28 @@ export default {
     },
     contentSCroll(position) {
       this.backUpShow = -position.y > 340;
+      let index = this.getIndex(-position.y) 
+      if(index !=  this.currentIndex){
+        this.currentIndex = index
+        this.$refs.detailNav.$refs.tabControl.currentIndex = this.getIndex(-position.y)
+      }
+      
     },
     tabClick(index){
       this.$refs.scroll.toPosition(0,-this.componentY[index],100)
       
     },
+    getIndex(y){
+      if(y<this.componentY[1]){
+        return 0
+      }else if(y>=this.componentY[1] && y<this.componentY[2]){
+        return 1
+      }else if(y>=this.componentY[2] && y<this.componentY[3]){
+        return 2
+      }else {
+        return 3
+      }
+    }
   }
 };
 </script>

@@ -6,7 +6,7 @@
       </div>
     </template>
     <template v-slot:center>
-      <tab-control :titles="titles" @tabClick='tabClick'/>
+      <tab-control :titles="titles" @tabClick='tabClick' ref="tabControl"/>
     </template>
   </navbar>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      titles: ["商品", "参数", "评论", "推荐"]
+      titles: ["商品", "参数", "评论", "推荐"],
     };
   },
   methods: {
