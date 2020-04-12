@@ -1,7 +1,7 @@
 <template>
   <swiper :options="swiperOption" v-if="detailBanner.length > 1" class="detail-swiper">
     <swiper-slide v-for="(item, index) in detailBanner" :key="index + 'detail'">
-      <img :src="item.img" alt="" />
+      <img :src="item.img" alt="" @load="imgLoad"/>
     </swiper-slide>
     <div
       id="detail-pagination"
@@ -55,7 +55,12 @@ export default {
             disableOnInteraction: false //用户操作swiper之后自动切换不会停止
           }
         : false;
-  }
+  },
+  methods: {
+    imgLoad(){
+      this.$emit('imgLoad')
+    }
+  },
 };
 </script>
 <style scoped>

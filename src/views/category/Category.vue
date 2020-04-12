@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="wrapper" ref="wrapper">
     <ul class="content">
       <li>列表1</li>
@@ -103,13 +104,20 @@
       <li>列表100</li>
     </ul>
   </div>
+  <main-tabbar></main-tabbar>
+</div>
+  
+  
 </template>
 
 <script>
+import MainTabbar from 'components/content/mainTabbar/MainTabbar'
 import BScroll from "better-scroll";
+
 export default {
   name: "Category",
   components: {
+    MainTabbar,
     BScroll
   },
   data() {

@@ -25,7 +25,7 @@ export const imgLoadListenerMixin = {
 export const backTop = {
   data(){
     return {
-      backUpShow: true,
+      backUpShow: false,
     }
   },
   methods: {

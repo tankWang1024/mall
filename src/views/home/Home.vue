@@ -39,6 +39,7 @@
       </template>
     </b-scroll>
     <back-top @click.native="backTop" v-show="backUpShow" />
+    <main-tabbar></main-tabbar>
   </div>
 </template>
 
@@ -46,6 +47,7 @@
 import Navbar from "components/common/navbar/Navbar";
 import TabControl from "components/content/tabControl/TabControl";
 import BScroll from "components/common/scroll/BScroll";
+import MainTabbar from 'components/content/mainTabbar/MainTabbar'
 
 import homeSwiper from "views/home/childrenCom/HomeSwiper";
 import HomeRecommend from "./childrenCom/HomeRecommend";
@@ -63,6 +65,7 @@ export default {
     Navbar,
     TabControl,
     BScroll,
+    MainTabbar,
     homeSwiper,
     HomeRecommend,
     HomeFeature,
@@ -136,6 +139,7 @@ export default {
     },
     contentSCroll(position) {
       console.log('滚动中');
+      console.log(-position.y)
       this.backUpShow = -position.y > 340;
       //-----------多次刷新，会触发betterscroll的scroll方法。。
       this.tabControlShow = -position.y > this.tabControlTop && -position.y > 50;

@@ -523,7 +523,8 @@ Mock.mock("mock/detail?id=pop1", {
     }, {
       isHigh: false,
       point: 4.78
-    }, ]
+    }, ],
+    desc:'【春秋款】收腰高腰立领'
 
   },
   imgList: ['https://s11.mogucdn.com/mlcdn/c45406/200105_60al0a0cl4d4glia5g9fbc08lild1_800x799.jpg_750x999.jpg',

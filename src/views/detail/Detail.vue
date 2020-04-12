@@ -8,7 +8,7 @@
       :probe-type="3"
       :pull-up-load="false"
     >
-      <detail-swiper :detailBanner="banner" class="swiper"/>
+      <detail-swiper :detailBanner="banner" class="swiper" @imgLoad="imgLoad" />
       <detail-info :info="info" />
       <goods-show :imgList="imgList" @goodsShowLoad="goodsShowLoad" />
       <goods-desc ref="desc" :goodsDesc="goodsDesc" />
@@ -17,6 +17,7 @@
       <goods-list :goodsList="recommend" class="goodslist" />
     </b-scroll>
     <back-top @click.native="backTop" v-show="backUpShow" />
+    <detail-bottom-bar class="detail-bottom-bar" @addCart="addCart"/>
   </div>
 </template>
 <script>
@@ -30,6 +31,7 @@ import DetailInfo from "./childrenCom/DetailInfo";
 import GoodsShow from "./childrenCom/GoodsShow";
 import GoodsDesc from "./childrenCom/GoodsDesc";
 import GoodsComment from "./childrenCom/GoodsComment";
+import DetailBottomBar from "./childrenCom/DetailBottomBar"
 
 import { getDetail, getRecommend } from "network/detail";
 
@@ -45,6 +47,7 @@ export default {
     GoodsShow,
     GoodsDesc,
     GoodsComment,
+    DetailBottomBar,
     GoodsList,
     BackTop
   },
@@ -64,7 +67,6 @@ export default {
   },
   mixins: [imgLoadListenerMixin, backTop],
   created() {
-    // console.log(this.$route.params.id)
     // this.id = this.$route.params.id
     //--------没数据，固定展示一个商品
     this.id = "pop1";
@@ -79,11 +81,12 @@ export default {
       }
     });
     getRecommend().then(res => {
-      console.log(res);
       this.recommend = res.data.list;
     });
   },
-  mounted() {},
+  mounted() {
+    console.log(this.$refs.scroll.scroll.y)
+  },
   methods: {
     goodsShowLoad() {
       this.$refs.scroll.refresh();
@@ -101,11 +104,22 @@ export default {
         this.currentIndex = index
         this.$refs.detailNav.$refs.tabControl.currentIndex = this.getIndex(-position.y)
       }
-      
     },
     tabClick(index){
       this.$refs.scroll.toPosition(0,-this.componentY[index],100)
-      
+    },
+    imgLoad(){
+      this.$refs.scroll.refresh();
+    },
+    addCart(){ // 加购商品所需字段
+      let production = {}
+      production.id = this.$route.params.id
+      production.title = this.info.title
+      production.img = this.imgList[0]
+      production.price = this.info.price
+      production.desc = this.info.desc
+      production.count = 1
+      this.$store.dispatch('addCart',production)
     },
     getIndex(y){
       if(y<this.componentY[1]){
@@ -149,5 +163,14 @@ export default {
 }
 .goodslist {
   padding-bottom: 20px;
+}
+.detail-bottom-bar{
+  width: 100%;
+  height: 49px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
 }
 </style>

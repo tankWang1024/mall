@@ -1,6 +1,6 @@
 <template>
   <div class="feature">
-    <img src="~assets/img/home/feature.png" alt="" class="feaImg" />。
+    <img src="~assets/img/home/feature.png" alt="" class="feaImg" />
   </div>
 </template>
 <script>
@@ -13,4 +13,5 @@ export default {
   width: 100%;
   height: 100px;
 }
+
 </style>
