@@ -84,9 +84,6 @@ export default {
     });
   },
   mounted() {},
-  destroyed() {
-    this.$bus.$off("imgLoad", this.imgLoadListener);
-  },
   methods: {
     goodsShowLoad() {
       this.$refs.scroll.refresh();

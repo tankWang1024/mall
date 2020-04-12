@@ -111,10 +111,6 @@ export default {
     this.getHomeGoods("sell");
     this.$refs.scroll.toPosition(0,0,0)
   },
-  deactivated() {
-    console.log('deactivated')
-    this.$bus.$off("imgLoad", this.imgLoadListener);
-  },
   methods: {
     //------事件监听----------
     tabClick(index) {

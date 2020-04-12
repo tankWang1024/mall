@@ -14,6 +14,12 @@ export const imgLoadListenerMixin = {
     this.$bus.$on("imgLoad", this.imgLoadListener);
     console.log('我是mixin中的mounted')
   },
+  deactivated() {
+    this.$bus.$off("imgLoad", this.imgLoadListener);
+  },
+  destroyed() {
+    this.$bus.$off("imgLoad", this.imgLoadListener);
+  },
 }
 
 export const backTop = {
