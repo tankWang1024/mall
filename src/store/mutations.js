@@ -10,7 +10,7 @@ export default {
     // console.log(state.cartList)
   },
   [ADD_CART](state, payload) {
-    state.cartList.push(payload)
+    state.cartList.unshift(payload)
     // console.log(state.cartList)
   },
   [ALL_CHECKED_FALES](state){
