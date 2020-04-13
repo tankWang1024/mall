@@ -12,7 +12,7 @@ export default {
 <style scoped>
 #tabbar {
   display: flex;
-  background-color: #eeecec;
+  background-color: #ffffff;
   position: fixed;
   left: 0;
   right: 0;

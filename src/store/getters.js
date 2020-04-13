@@ -4,5 +4,8 @@ export default {
   },
   cartList(state){
     return state.cartList
+  },
+  cartAllChecked(state){
+    return state.cartAllChecked
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="detail" v-if="update">
-    <detail-navbar class="navbar" @tabClick='tabClick' ref="detailNav"/>
+    <detail-navbar class="navbar" @tabClick="tabClick" ref="detailNav" />
     <b-scroll
       class="scroll-wrapper"
       ref="scroll"
@@ -17,7 +17,7 @@
       <goods-list :goodsList="recommend" class="goodslist" />
     </b-scroll>
     <back-top @click.native="backTop" v-show="backUpShow" />
-    <detail-bottom-bar class="detail-bottom-bar" @addCart="addCart"/>
+    <detail-bottom-bar class="detail-bottom-bar" @addCart="addCart" />
   </div>
 </template>
 <script>
@@ -31,7 +31,7 @@ import DetailInfo from "./childrenCom/DetailInfo";
 import GoodsShow from "./childrenCom/GoodsShow";
 import GoodsDesc from "./childrenCom/GoodsDesc";
 import GoodsComment from "./childrenCom/GoodsComment";
-import DetailBottomBar from "./childrenCom/DetailBottomBar"
+import DetailBottomBar from "./childrenCom/DetailBottomBar";
 
 import { getDetail, getRecommend } from "network/detail";
 
@@ -62,7 +62,7 @@ export default {
       goodsComment: {},
       recommend: [],
       componentY: [],
-      currentIndex:0
+      currentIndex: 0
     };
   },
   mixins: [imgLoadListenerMixin, backTop],
@@ -84,52 +84,60 @@ export default {
       this.recommend = res.data.list;
     });
   },
-  mounted() {
-    console.log(this.$refs.scroll.scroll.y)
-  },
+  mounted() {},
   methods: {
     goodsShowLoad() {
       this.$refs.scroll.refresh();
-      this.componentY = []
-      this.componentY.push(0)
-      this.componentY.push(this.$refs.desc.$el.offsetTop)
-      this.componentY.push(this.$refs.comment.$el.offsetTop)
-      this.componentY.push(this.$refs.recommend.offsetTop)
-      console.log(this.componentY)
+      this.componentY = [];
+      this.componentY.push(0);
+      this.componentY.push(this.$refs.desc.$el.offsetTop);
+      this.componentY.push(this.$refs.comment.$el.offsetTop);
+      this.componentY.push(this.$refs.recommend.offsetTop);
+      console.log(this.componentY);
     },
     contentSCroll(position) {
       this.backUpShow = -position.y > 340;
-      let index = this.getIndex(-position.y) 
-      if(index !=  this.currentIndex){
-        this.currentIndex = index
-        this.$refs.detailNav.$refs.tabControl.currentIndex = this.getIndex(-position.y)
+      let index = this.getIndex(-position.y);
+      if (index != this.currentIndex) {
+        this.currentIndex = index;
+        this.$refs.detailNav.$refs.tabControl.currentIndex = this.getIndex(
+          -position.y
+        );
       }
     },
-    tabClick(index){
-      this.$refs.scroll.toPosition(0,-this.componentY[index],100)
+    tabClick(index) {
+      this.$refs.scroll.toPosition(0, -this.componentY[index], 100);
     },
-    imgLoad(){
+    imgLoad() {
       this.$refs.scroll.refresh();
+      console.log(-this.$refs.scroll.scroll.y);
+      
+      this.currentIndex = this.getIndex(-this.$refs.scroll.scroll.y)
     },
-    addCart(){ // 加购商品所需字段
-      let production = {}
-      production.id = this.$route.params.id
-      production.title = this.info.title
-      production.img = this.imgList[0]
-      production.price = this.info.price
-      production.desc = this.info.desc
-      production.count = 1
-      this.$store.dispatch('addCart',production)
+    addCart() {
+      // 加购商品所需字段
+      let production = {};
+      production.id = this.$route.params.id;
+      production.title = this.info.title;
+      production.img = this.imgList[0];
+      production.price = this.info.price;
+      production.desc = this.info.desc;
+      production.count = 1;
+      production.checked = false;
+      this.$store.dispatch("addCart", production).then(res => {
+        this.$toast.show(res);
+      });
     },
-    getIndex(y){
-      if(y<this.componentY[1]){
-        return 0
-      }else if(y>=this.componentY[1] && y<this.componentY[2]){
-        return 1
-      }else if(y>=this.componentY[2] && y<this.componentY[3]){
-        return 2
-      }else {
-        return 3
+    getIndex(y) {
+      //-----------------------------------------------滚动高度获取有问题
+      if (y < this.componentY[1]) {
+        return 0;
+      } else if (y >= this.componentY[1] && y < this.componentY[2]) {
+        return 1;
+      } else if (y >= this.componentY[2] && y < this.componentY[3]) {
+        return 2;
+      } else {
+        return 3;
       }
     }
   }
@@ -164,7 +172,7 @@ export default {
 .goodslist {
   padding-bottom: 20px;
 }
-.detail-bottom-bar{
+.detail-bottom-bar {
   width: 100%;
   height: 49px;
   position: fixed;

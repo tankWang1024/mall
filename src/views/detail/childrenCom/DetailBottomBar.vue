@@ -33,6 +33,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 -4px 2px rgba(193, 193, 193, 0.3);
 }
 .bottom-bar > .item {
   height: 100%;
