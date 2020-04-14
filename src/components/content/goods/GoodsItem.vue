@@ -62,6 +62,7 @@ export default {
   width: 16px;
   height: 14px;
   background-image: url('~assets/img/home/收藏.svg');
+  background-size: cover;
   margin-left: 10px;
 }
 </style>

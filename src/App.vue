@@ -20,6 +20,7 @@ export default {
 @import url("~assets/css/base.css");
 html,body{
   height: 100%;
+  font-size: 16px;
 }
 #app{
   height: 100%;
