@@ -1,11 +1,15 @@
 <template>
-  <!-- 加入判断时，loop才生效 -->
-  <swiper :options="swiperOption" ref="mySwiper" v-if="homeSwiper.length > 1">
-    <swiper-slide v-for="item in homeSwiper" :key="item.image">
-      <img :src="item.image" alt="" class="swiper-img" @load="bannerLoad" />
-    </swiper-slide>
-    <div id="home-pagination" slot="pagination" class="swiper-pagination"></div>
-  </swiper>
+    <!-- 加入判断时，loop才生效 -->
+    <swiper :options="swiperOption" ref="mySwiper" v-if="homeSwiper.length > 1" class="swiper">
+      <swiper-slide v-for="item in homeSwiper" :key="item.image">
+        <img :src="item.image" alt="" class="swiper-img" @load="bannerLoad" />
+      </swiper-slide>
+      <div
+        id="home-pagination"
+        slot="pagination"
+        class="swiper-pagination"
+      ></div>
+    </swiper>
 </template>
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
@@ -68,6 +72,9 @@ export default {
 };
 </script>
 <style scoped>
+.swiper{
+  height: 200px;
+}
 .swiper-img {
   width: 100%;
   height: 100%;

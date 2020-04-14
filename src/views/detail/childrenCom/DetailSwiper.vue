@@ -68,4 +68,7 @@ export default {
   height: 300px;
   overflow: hidden;
 }
+img{
+  width: 100%;
+}
 </style>
