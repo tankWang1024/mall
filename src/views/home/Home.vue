@@ -139,7 +139,6 @@ export default {
     },
     contentSCroll(position) {
       console.log('滚动中');
-      console.log(-position.y)
       this.backUpShow = -position.y > 340;
       //-----------多次刷新，会触发betterscroll的scroll方法。。
       this.tabControlShow = -position.y > this.tabControlTop && -position.y > 50;
@@ -165,9 +164,13 @@ export default {
           if (res.status == 200) {
             this.goods[type].list.push(...res.data.data.list);
             this.goods[type].page += 1;
+          }else{
+            
           }
         })
-        .catch(err => {});
+        .catch(err => {
+          this.$toast.show('加载出错，详情：\n'+err)
+        });
     }
   }
 };

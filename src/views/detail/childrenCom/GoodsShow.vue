@@ -3,7 +3,7 @@
     <img
       v-for="(item, index) in imgList"
       :key="index + 'goodsShow'"
-      :src="item"
+      v-lazy="item"
       @load="imgLoad"
     />
   </div>
@@ -26,15 +26,13 @@ export default {
   },
   methods: {
     imgLoad() {
-      if (++this.currentIndex == this.imgList.length) {
-        this.$emit("goodsShowLoad");
-      }
+      this.$emit("goodsShowLoad");
     }
   }
 };
 </script>
 <style scoped>
-.goodsShow{
+.goodsShow {
   width: 96%;
   margin: 0 auto;
 }
