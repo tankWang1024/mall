@@ -47,7 +47,7 @@
 import Navbar from "components/common/navbar/Navbar";
 import TabControl from "components/content/tabControl/TabControl";
 import BScroll from "components/common/scroll/BScroll";
-import MainTabbar from 'components/content/mainTabbar/MainTabbar'
+import MainTabbar from "components/content/mainTabbar/MainTabbar";
 
 import homeSwiper from "views/home/childrenCom/HomeSwiper";
 import HomeRecommend from "./childrenCom/HomeRecommend";
@@ -57,7 +57,7 @@ import BackTop from "components/content/backTop/BackTop";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
 
-import {imgLoadListenerMixin,backTop} from 'common/mixin'
+import { imgLoadListenerMixin, backTop } from "common/mixin";
 
 export default {
   name: "Home",
@@ -78,22 +78,22 @@ export default {
       recommend: [],
       goods: {
         pop: {
-          page: 1,
+          page: 0,
           list: []
         },
         new: {
-          page: 1,
+          page: 0,
           list: []
         },
         sell: {
-          page: 1,
+          page: 0,
           list: []
         }
       },
       currentType: "pop",
       currentIndex: 0,
       tabControlTop: 0,
-      tabControlShow: false,
+      tabControlShow: false
     };
   },
   computed: {
@@ -101,18 +101,21 @@ export default {
       return this.goods[this.currentType].list;
     }
   },
-  mixins:[imgLoadListenerMixin,backTop],
+  mixins: [imgLoadListenerMixin, backTop],
   created() {
-    console.log('created');
+    console.log("created");
   },
   mounted() {
-    console.log('mounted');
+    console.log("mounted");
     //请求数据
     this.getHomeMultidata();
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
-    this.$refs.scroll.toPosition(0,0,0)
+    this.$refs.scroll.toPosition(0, 0, 0);
+  },
+  deactivated() {
+    console.log("deactivated");
   },
   methods: {
     //------事件监听----------
@@ -130,18 +133,19 @@ export default {
       }
       this.$refs.tabControl1.currentIndex = index;
       this.$refs.tabControl2.currentIndex = index;
-      if(this.tabControlShow){
-        this.$refs.scroll.toPosition(0,-this.tabControlTop,0)
+      if (this.tabControlShow) {
+        this.$refs.scroll.toPosition(0, -this.tabControlTop, 0);
       }
     },
     SwipperImgLoad() {
       this.tabControlTop = this.$refs.tabControl2.$el.offsetTop;
     },
     contentSCroll(position) {
-      console.log('滚动中');
+      // console.log('滚动中');
       this.backUpShow = -position.y > 340;
       //-----------多次刷新，会触发betterscroll的scroll方法。。
-      this.tabControlShow = -position.y > this.tabControlTop && -position.y > 50;
+      this.tabControlShow =
+        -position.y > this.tabControlTop && -position.y > 50;
     },
     loadMore() {
       this.getHomeGoods(this.currentType);
@@ -158,18 +162,23 @@ export default {
       });
     },
     getHomeGoods(type) {
+      ++this.goods[type].page;
+      // console.log("请求第" + this.goods[type].page + "页数据");
       getHomeGoods(type, this.goods[type].page)
         .then(res => {
-          // console.log(res);
-          if (res.status == 200) {
-            this.goods[type].list.push(...res.data.data.list);
-            this.goods[type].page += 1;
-          }else{
-            
+          console.log(res);
+          if (res) {
+            if (res.status == 200) {
+              this.goods[type].list.push(...res.data.data.list);
+            } else {
+              --this.goods[type].page;
+            }
+          } else {
+            --this.goods[type].page;
           }
         })
         .catch(err => {
-          this.$toast.show('加载出错，详情：\n'+err)
+          // this.$toast.show('已经到底了~')
         });
     }
   }
