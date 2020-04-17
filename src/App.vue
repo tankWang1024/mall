@@ -21,6 +21,7 @@ export default {
 html,body{
   height: 100%;
   font-size: 16px;
+  touch-action: none;
 }
 #app{
   height: 100%;
