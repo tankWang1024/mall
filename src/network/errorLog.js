@@ -1,8 +1,9 @@
 import axios from 'axios'
+const isDev = process.env.NODE_ENV
+const baseURL = isDev?'http://localhost:3001':'http://suen.xyz:3001'
 function request(config) {
   const instance = axios.create({
-    // baseURL: 'http://suen.xyz:3001',
-    baseURL:'http://localhost:3001',
+    baseURL,
     timeout: 10000,
   })
   // axios拦截器

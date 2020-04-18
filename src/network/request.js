@@ -15,7 +15,7 @@ export function request(config) {
     
     return config //必须return
   }, err => {
-
+    // return Promise.reject(err)
   })
   // 响应拦截
   instance.interceptors.response.use(res => {
