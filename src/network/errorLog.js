@@ -1,5 +1,6 @@
 import axios from 'axios'
 const isDev = process.env.NODE_ENV == 'development'
+// const baseURL = 'http://suen.xyz:3001'
 const baseURL = isDev?'http://localhost:3001':'http://suen.xyz:3001'
 function request(config) {
   const instance = axios.create({

@@ -8,6 +8,9 @@
 <script>
 export default {
   name:'Index',
+  mounted() {
+    throw 'log'
+  },
 };
 </script>
 
