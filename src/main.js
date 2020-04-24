@@ -1,3 +1,10 @@
+/**
+ * 手机端 商城
+ * 技术栈：Vue,vue-route,vuex,axios,防抖动函数
+ * 引用插件：vue-awesome-swpier,vue-lazyload,fastclick,better-scroll,postcss-px-to-viewport
+ * 封装插件：toast
+ * 
+ */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
